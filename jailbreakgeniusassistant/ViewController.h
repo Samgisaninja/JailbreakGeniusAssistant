@@ -10,6 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) NSMutableArray *packageNames;
+@property (strong, nonatomic) NSMutableArray *packageIDs;
+@property (strong, nonatomic) IBOutlet UIButton *goButton;
+
 
 @end
 
