@@ -35,8 +35,8 @@
         NSString *withoutPrefix = [[installedPackageBundleIDsWithPrefix objectAtIndex:i] stringByReplacingOccurrencesOfString:@"Package: " withString:@""];
         [installedPackageBundleIDs addObject:withoutPrefix];
     }
-    NSLog(@"GENIUS APP TESTING installedPackageBundleIDs: %@", installedPackageBundleIDs);
-    [installedPackageBundleIDs writeToFile:@"/var/mobile/Media/installed_packages.plist" atomically:TRUE];
+    NSString * installedPackagesString = [installedPackageBundleIDs componentsJoinedByString:@"\n"];
+    [installedPackagesString writeToFile:@"/var/mobile/Media/installed_packages.txt" atomically:TRUE];
 }
 
 
