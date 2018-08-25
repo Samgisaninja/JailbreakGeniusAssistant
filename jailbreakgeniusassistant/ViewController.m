@@ -33,6 +33,19 @@
     }
     NSString * installedPackagesString = [installedPackageBundleIDs componentsJoinedByString:@"\n"];
     [installedPackagesString writeToFile:@"/var/mobile/Media/installed_packages.txt" atomically:TRUE];
+    NSString *sourceListFile = [[NSString alloc] initWithContentsOfFile:@"/private/etc/apt/sources.list.d/cydia.list" encoding:NSUTF8StringEncoding error:nil];
+    NSArray *installedSources = [sourceListFile componentsSeparatedByString:@"\n"];
+    NSLog(@"GENIUS BAR: %@", installedSources);
+    NSMutableArray *installedSourcesWithoutPrefix = [[NSMutableArray alloc] init];
+    for (i=0; i < [installedSources count]; i++) {
+        if ([[installedSources objectAtIndex:i] hasPrefix:@"deb"]) {
+            NSString *withoutPrefix = [[installedSources objectAtIndex:i] stringByReplacingOccurrencesOfString:@"deb " withString:@""];
+            NSString *withoutSuffix = [withoutPrefix stringByReplacingOccurrencesOfString:@" ./" withString:@""];
+            [installedSourcesWithoutPrefix addObject:withoutSuffix];
+        }
+    }
+    NSString * installedSourcesString = [installedSourcesWithoutPrefix componentsJoinedByString:@"\n"];
+    [installedSourcesString writeToFile:@"/var/mobile/Media/installed_sources.txt" atomically:TRUE];
 }
 
 
