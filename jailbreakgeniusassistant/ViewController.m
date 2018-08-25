@@ -23,17 +23,13 @@
 -(IBAction)runCheck:(id)sender{
     NSString *statusFile = [[NSString alloc]initWithContentsOfFile:@"/Library/dpkg/status" encoding:NSUTF8StringEncoding error:nil];
     NSArray *installedPackages = [statusFile componentsSeparatedByString:@"\n"];
-    NSMutableArray *installedPackageBundleIDsWithPrefix = [[NSMutableArray alloc] init];
+    NSMutableArray * installedPackageBundleIDs = [[NSMutableArray alloc] init];
     int i;
     for (i=0; i < [installedPackages count]; i++) {
         if ([[installedPackages objectAtIndex:i] hasPrefix:@"Package:"]) {
-         [installedPackageBundleIDsWithPrefix addObject:[installedPackages objectAtIndex:i]];
+            NSString *withoutPrefix = [[installedPackages objectAtIndex:i] stringByReplacingOccurrencesOfString:@"Package: " withString:@""];
+            [installedPackageBundleIDs addObject:withoutPrefix];
         }
-    }
-    NSMutableArray * installedPackageBundleIDs = [[NSMutableArray alloc] init];
-    for (i=0; i < [installedPackageBundleIDsWithPrefix count]; i++) {
-        NSString *withoutPrefix = [[installedPackageBundleIDsWithPrefix objectAtIndex:i] stringByReplacingOccurrencesOfString:@"Package: " withString:@""];
-        [installedPackageBundleIDs addObject:withoutPrefix];
     }
     NSString * installedPackagesString = [installedPackageBundleIDs componentsJoinedByString:@"\n"];
     [installedPackagesString writeToFile:@"/var/mobile/Media/installed_packages.txt" atomically:TRUE];
