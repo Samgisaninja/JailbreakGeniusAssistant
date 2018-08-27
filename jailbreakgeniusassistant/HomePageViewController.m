@@ -4,20 +4,27 @@
 //
 //  Created by Sam Gardner on 8/23/18.
 //  Copyright © 2018 Sam Gardner. All rights reserved.
+//  
 //
 
-#import "ViewController.h"
+#import "HomePageViewController.h"
+#import "PMViewController.h"
 
-@interface ViewController ()
+@interface HomePageViewController ()
 
 @end
 
-@implementation ViewController
+@implementation HomePageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
 }
 
 -(IBAction)runCheck:(id)sender{
@@ -32,10 +39,8 @@
         }
     }
     NSString * installedPackagesString = [installedPackageBundleIDs componentsJoinedByString:@"\n"];
-    [installedPackagesString writeToFile:@"/var/mobile/Media/installed_packages.txt" atomically:TRUE];
     NSString *sourceListFile = [[NSString alloc] initWithContentsOfFile:@"/private/etc/apt/sources.list.d/cydia.list" encoding:NSUTF8StringEncoding error:nil];
     NSArray *installedSources = [sourceListFile componentsSeparatedByString:@"\n"];
-    NSLog(@"GENIUS BAR: %@", installedSources);
     NSMutableArray *installedSourcesWithoutPrefix = [[NSMutableArray alloc] init];
     for (i=0; i < [installedSources count]; i++) {
         if ([[installedSources objectAtIndex:i] hasPrefix:@"deb"]) {
@@ -45,8 +50,16 @@
         }
     }
     NSString * installedSourcesString = [installedSourcesWithoutPrefix componentsJoinedByString:@"\n"];
-    [installedSourcesString writeToFile:@"/var/mobile/Media/installed_sources.txt" atomically:TRUE];
+    _uploadToHastebin = [NSString stringWithFormat:@"Packages: \n %@ \n \n Sources: \n %@", installedPackagesString, installedSourcesString];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //self->_goToPasteManagerViewController = [[UIStoryboardSegue alloc] initWithIdentifier:@"goToPasteManagerViewController" source:self destination:[PasteManagerViewController self]];
+        [self performSegueWithIdentifier:@"goToPasteManagerViewController" sender:self];
+    });
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    PMViewController *destinationViewContoller = [segue destinationViewController];
+    destinationViewContoller.uploadToHastebin = _uploadToHastebin;
+}
 
 @end

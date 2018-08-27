@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSPasteManager.h"
 
-@interface ViewController : UIViewController
+@interface HomePageViewController : UIViewController
 
 @property (strong, nonatomic) NSMutableArray *packageNames;
 @property (strong, nonatomic) NSMutableArray *packageIDs;
 @property (strong, nonatomic) IBOutlet UIButton *goButton;
-
-
+@property (strong, nonatomic) CSPasteManager *pasteManager;
+@property (strong, nonatomic) IBOutlet UIButton *completeButton;
+@property (strong, nonatomic) UIStoryboardSegue *goToPasteManagerViewController;
+@property (strong, nonatomic) NSString * uploadToHastebin;
 @end
 

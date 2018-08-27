@@ -7,25 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D057D5F2133C6A600077674 /* PMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D057D5E2133C6A600077674 /* PMViewController.m */; };
+		8D057D622133E02100077674 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D057D612133E02100077674 /* AboutViewController.m */; };
 		8D1B2717212F5F1600ADD780 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1B2716212F5F1600ADD780 /* AppDelegate.m */; };
-		8D1B271A212F5F1600ADD780 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1B2719212F5F1600ADD780 /* ViewController.m */; };
+		8D1B271A212F5F1600ADD780 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1B2719212F5F1600ADD780 /* HomePageViewController.m */; };
 		8D1B271D212F5F1600ADD780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1B271B212F5F1600ADD780 /* Main.storyboard */; };
 		8D1B271F212F5F1A00ADD780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D1B271E212F5F1A00ADD780 /* Assets.xcassets */; };
 		8D1B2722212F5F1A00ADD780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1B2720212F5F1A00ADD780 /* LaunchScreen.storyboard */; };
 		8D1B2725212F5F1A00ADD780 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1B2724212F5F1A00ADD780 /* main.m */; };
+		8DE5DDBB213135B900470230 /* CSPasteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5DDBA213135B800470230 /* CSPasteManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D057D5D2133C6A600077674 /* PMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMViewController.h; sourceTree = "<group>"; };
+		8D057D5E2133C6A600077674 /* PMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMViewController.m; sourceTree = "<group>"; };
+		8D057D602133E02100077674 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		8D057D612133E02100077674 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		8D1B2712212F5F1600ADD780 /* jailbreakgeniusassistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jailbreakgeniusassistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1B2715212F5F1600ADD780 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D1B2716212F5F1600ADD780 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8D1B2718212F5F1600ADD780 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8D1B2719212F5F1600ADD780 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8D1B2718212F5F1600ADD780 /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		8D1B2719212F5F1600ADD780 /* HomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		8D1B271C212F5F1600ADD780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D1B271E212F5F1A00ADD780 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D1B2721212F5F1A00ADD780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D1B2723212F5F1A00ADD780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1B2724212F5F1A00ADD780 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8DE5DDB9213135B000470230 /* CSPasteManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSPasteManager.h; sourceTree = "<group>"; };
+		8DE5DDBA213135B800470230 /* CSPasteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSPasteManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +69,15 @@
 			children = (
 				8D1B2715212F5F1600ADD780 /* AppDelegate.h */,
 				8D1B2716212F5F1600ADD780 /* AppDelegate.m */,
-				8D1B2718212F5F1600ADD780 /* ViewController.h */,
-				8D1B2719212F5F1600ADD780 /* ViewController.m */,
+				8DE5DDB9213135B000470230 /* CSPasteManager.h */,
+				8DE5DDBA213135B800470230 /* CSPasteManager.m */,
+				8D1B2718212F5F1600ADD780 /* HomePageViewController.h */,
+				8D1B2719212F5F1600ADD780 /* HomePageViewController.m */,
 				8D1B271B212F5F1600ADD780 /* Main.storyboard */,
+				8D057D602133E02100077674 /* AboutViewController.h */,
+				8D057D612133E02100077674 /* AboutViewController.m */,
+				8D057D5D2133C6A600077674 /* PMViewController.h */,
+				8D057D5E2133C6A600077674 /* PMViewController.m */,
 				8D1B271E212F5F1A00ADD780 /* Assets.xcassets */,
 				8D1B2720212F5F1A00ADD780 /* LaunchScreen.storyboard */,
 				8D1B2723212F5F1A00ADD780 /* Info.plist */,
@@ -141,7 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D1B271A212F5F1600ADD780 /* ViewController.m in Sources */,
+				8D1B271A212F5F1600ADD780 /* HomePageViewController.m in Sources */,
+				8D057D5F2133C6A600077674 /* PMViewController.m in Sources */,
+				8DE5DDBB213135B900470230 /* CSPasteManager.m in Sources */,
+				8D057D622133E02100077674 /* AboutViewController.m in Sources */,
 				8D1B2725212F5F1A00ADD780 /* main.m in Sources */,
 				8D1B2717212F5F1600ADD780 /* AppDelegate.m in Sources */,
 			);
