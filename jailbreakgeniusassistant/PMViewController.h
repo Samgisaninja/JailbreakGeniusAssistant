@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *completeButton;
 @property (strong, nonatomic) NSString *uploadToHastebin;
+@property (strong, nonatomic) NSString *uploadLocation;
 
 
 @end

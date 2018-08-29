@@ -46,7 +46,7 @@
 }
 
 - (IBAction)openPost:(id)sender {
-    [[UIPasteboard generalPasteboard] setString:_completeButton.titleLabel.text];
+    [[UIPasteboard generalPasteboard] setString:_uploadLocation];
     [_completeButton setTitle:@"copied" forState:UIControlStateNormal];
     [self performSelector:@selector(refreshCompletionTitle) withObject:nil afterDelay:3];
 }
@@ -58,7 +58,8 @@
 - (void)updateForCompletionWithURL:(NSString *)URL withSuccess:(BOOL)success {
     // make sure were on the main thread for updating UI since this will be called inside a block
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self->_completeButton setTitle:@"Tap to copy code, paste into discord" forState:UIControlStateNormal];
+        [self->_completeButton setTitle:@"Tap to copy URL, paste into discord" forState:UIControlStateNormal];
+        self->_uploadLocation = [NSString stringWithFormat:@"%@", URL];
         
     });
 }
