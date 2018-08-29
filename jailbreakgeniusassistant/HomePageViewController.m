@@ -9,6 +9,7 @@
 
 #import "HomePageViewController.h"
 #import "PMViewController.h"
+#include <sys/sysctl.h>
 
 @interface HomePageViewController ()
 
@@ -50,9 +51,27 @@
         }
     }
     NSString * installedSourcesString = [installedSourcesWithoutPrefix componentsJoinedByString:@"\n"];
-    _uploadToHastebin = [NSString stringWithFormat:@"Packages: \n %@ \n \n Sources: \n %@", installedPackagesString, installedSourcesString];
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *modelChar = malloc(size);
+    sysctlbyname("hw.machine", modelChar, &size, NULL, 0);
+    NSString *deviceModel = [NSString stringWithUTF8String:modelChar];
+    free(modelChar);
+    NSString *deviceVersion = [[UIDevice currentDevice] systemVersion];
+    sysctlbyname("kern.osversion", NULL, &size, NULL, 0);
+    char *buildChar = malloc(size);
+    sysctlbyname("kern.osversion", buildChar, &size, NULL, 0);
+    NSString *deviceBuild = [NSString stringWithUTF8String:buildChar];
+    free(buildChar);
+    _uploadToHastebin = [NSString stringWithFormat:@"Device: %@ running %@ (iOS %@) \nPackages: \n%@ \n \nSources: \n%@", deviceModel, deviceBuild, deviceVersion, installedPackagesString, installedSourcesString];
+    NSDictionary *saveToFile = @{
+                                 @"Model" : deviceModel,
+                                 @"Build" : deviceBuild,
+                                 @"iOS" : deviceVersion,
+                                 @"Packages" : installedPackageBundleIDs,
+                                 @"Sources" : installedSourcesWithoutPrefix
+                                 };
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        //self->_goToPasteManagerViewController = [[UIStoryboardSegue alloc] initWithIdentifier:@"goToPasteManagerViewController" source:self destination:[PasteManagerViewController self]];
         [self performSegueWithIdentifier:@"goToPasteManagerViewController" sender:self];
     });
 }
