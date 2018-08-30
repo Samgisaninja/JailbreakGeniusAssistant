@@ -71,6 +71,7 @@
                                  @"Packages" : installedPackageBundleIDs,
                                  @"Sources" : installedSourcesWithoutPrefix
                                  };
+    [saveToFile writeToFile:@"/var/mobile/Media/genius.plist" atomically:YES];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self performSegueWithIdentifier:@"goToPasteManagerViewController" sender:self];
     });
