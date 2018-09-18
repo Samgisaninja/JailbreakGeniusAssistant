@@ -28,7 +28,20 @@
     [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
 }
 
--(IBAction)runCheck:(id)sender{
+-(IBAction)startButton:(id)sender{
+    UIAlertController *enterDiscordName = [UIAlertController alertControllerWithTitle:@"Discord Name" message:@"Please enter your discord name and discriminator" preferredStyle:UIAlertControllerStyleAlert];
+    [enterDiscordName addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Samg_is_a_Ninja#6113";
+    }];
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self->_discordTag = [[[enterDiscordName textFields] firstObject] text];
+        [self runCheck];
+    }];
+    [enterDiscordName addAction:continueAction];
+    [self presentViewController:enterDiscordName animated:TRUE completion:nil];
+}
+
+-(void)runCheck{
     NSString *statusFile = [[NSString alloc]initWithContentsOfFile:@"/Library/dpkg/status" encoding:NSUTF8StringEncoding error:nil];
     NSArray *installedPackages = [statusFile componentsSeparatedByString:@"\n"];
     NSMutableArray * installedPackageBundleIDs = [[NSMutableArray alloc] init];
@@ -69,12 +82,11 @@
                                  @"Build" : deviceBuild,
                                  @"iOS" : deviceVersion,
                                  @"Packages" : installedPackageBundleIDs,
-                                 @"Sources" : installedSourcesWithoutPrefix
+                                 @"Sources" : installedSourcesWithoutPrefix,
+                                 @"DiscordTag" : _discordTag
                                  };
     [saveToFile writeToFile:@"/var/mobile/Media/genius.plist" atomically:YES];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self performSegueWithIdentifier:@"goToPasteManagerViewController" sender:self];
-    });
+    [self performSegueWithIdentifier:@"goToPasteManagerViewController" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

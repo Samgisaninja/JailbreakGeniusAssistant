@@ -22,7 +22,7 @@
                                 <rect key="frame" x="163" y="318.5" width="49" height="30"/>
                                 <state key="normal" title="Get list"/>
                                 <connections>
-                                    <action selector="runCheck:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7iP-5s-Jwc"/>
+                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n27-6D-q1N"/>
                                 </connections>
                             </button>
                         </subviews>

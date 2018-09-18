@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *completeButton;
 @property (strong, nonatomic) UIStoryboardSegue *goToPasteManagerViewController;
 @property (strong, nonatomic) NSString * uploadToHastebin;
+@property (strong, nonatomic) NSString * discordTag;
 @end
 
