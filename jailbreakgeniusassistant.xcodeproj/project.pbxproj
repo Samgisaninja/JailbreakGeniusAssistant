@@ -15,6 +15,7 @@
 		8D1B271F212F5F1A00ADD780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D1B271E212F5F1A00ADD780 /* Assets.xcassets */; };
 		8D1B2722212F5F1A00ADD780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1B2720212F5F1A00ADD780 /* LaunchScreen.storyboard */; };
 		8D1B2725212F5F1A00ADD780 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1B2724212F5F1A00ADD780 /* main.m */; };
+		8D5E945D21545AEB00819F7F /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5E945C21545AEB00819F7F /* AFNetworking.framework */; };
 		8DE5DDBB213135B900470230 /* CSPasteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5DDBA213135B800470230 /* CSPasteManager.m */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		8D1B2721212F5F1A00ADD780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D1B2723212F5F1A00ADD780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1B2724212F5F1A00ADD780 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D5E945C21545AEB00819F7F /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		8DE5DDB9213135B000470230 /* CSPasteManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSPasteManager.h; sourceTree = "<group>"; };
 		8DE5DDBA213135B800470230 /* CSPasteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSPasteManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -42,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5E945D21545AEB00819F7F /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +85,7 @@
 				8D1B2720212F5F1A00ADD780 /* LaunchScreen.storyboard */,
 				8D1B2723212F5F1A00ADD780 /* Info.plist */,
 				8D1B2724212F5F1A00ADD780 /* main.m */,
+				8D5E945C21545AEB00819F7F /* AFNetworking.framework */,
 			);
 			path = jailbreakgeniusassistant;
 			sourceTree = "<group>";
@@ -96,6 +100,7 @@
 				8D1B270E212F5F1600ADD780 /* Sources */,
 				8D1B270F212F5F1600ADD780 /* Frameworks */,
 				8D1B2710212F5F1600ADD780 /* Resources */,
+				8D5E945E21545B7F00819F7F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -150,6 +155,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8D5E945E21545B7F00819F7F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/jailbreakgeniusassistant/AFNetworking.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/jailbreakgeniusassistant/AFNetworking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D1B270E212F5F1600ADD780 /* Sources */ = {
@@ -303,6 +330,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7RD2AU3P6T;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/jailbreakgeniusassistant",
+				);
 				INFOPLIST_FILE = jailbreakgeniusassistant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -321,6 +352,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7RD2AU3P6T;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/jailbreakgeniusassistant",
+				);
 				INFOPLIST_FILE = jailbreakgeniusassistant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

