@@ -8,7 +8,6 @@
 //
 
 #import "HomePageViewController.h"
-#import "PMViewController.h"
 #import "AFNetworking.framework/Headers/AFNetworking.h"
 #import "AFNetworking.framework/Headers/AFHTTPSessionManager.h"
 #include <sys/sysctl.h>
@@ -44,6 +43,9 @@
 }
 
 -(void)runCheck{
+    [[self goButton] setTitle:@"Uploading..." forState:UIControlStateNormal];
+    [[self goButton] setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [[self goButton] setEnabled:FALSE];
     NSString *statusFile = [[NSString alloc]initWithContentsOfFile:@"/Library/dpkg/status" encoding:NSUTF8StringEncoding error:nil];
     NSArray *installedPackages = [statusFile componentsSeparatedByString:@"\n"];
     NSMutableArray * installedPackageBundleIDs = [[NSMutableArray alloc] init];
@@ -54,7 +56,6 @@
             [installedPackageBundleIDs addObject:withoutPrefix];
         }
     }
-    NSString * installedPackagesString = [installedPackageBundleIDs componentsJoinedByString:@"\n"];
     NSString *sourceListFile = [[NSString alloc] initWithContentsOfFile:@"/private/etc/apt/sources.list.d/cydia.list" encoding:NSUTF8StringEncoding error:nil];
     NSArray *installedSources = [sourceListFile componentsSeparatedByString:@"\n"];
     NSMutableArray *installedSourcesWithoutPrefix = [[NSMutableArray alloc] init];
@@ -65,7 +66,6 @@
             [installedSourcesWithoutPrefix addObject:withoutSuffix];
         }
     }
-    NSString * installedSourcesString = [installedSourcesWithoutPrefix componentsJoinedByString:@"\n"];
     size_t size;
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
     char *modelChar = malloc(size);
@@ -78,7 +78,6 @@
     sysctlbyname("kern.osversion", buildChar, &size, NULL, 0);
     NSString *deviceBuild = [NSString stringWithUTF8String:buildChar];
     free(buildChar);
-    _uploadToHastebin = [NSString stringWithFormat:@"Device: %@ running %@ (iOS %@) \nPackages: \n%@ \n \nSources: \n%@", deviceModel, deviceBuild, deviceVersion, installedPackagesString, installedSourcesString];
     NSDictionary *saveToFile = @{
                                  @"Model" : deviceModel,
                                  @"Build" : deviceBuild,
@@ -88,19 +87,21 @@
                                  @"DiscordTag" : _discordTag
                                  };
     [saveToFile writeToFile:@"/var/mobile/Media/genius.plist" atomically:YES];
-    [self performSegueWithIdentifier:@"goToPasteManagerViewController" sender:self];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     [manager POST:@"https://rem.reoo.me" parameters:saveToFile progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self->_goButton setTitle:@"Done!" forState:UIControlStateNormal];
+        [self->_goButton setEnabled:FALSE];
+        [self->_goButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        UIAlertController *uploadFailed = [UIAlertController alertControllerWithTitle:@"Uploading packages failed" message:[NSString stringWithFormat:@"%@", [error localizedDescription]] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *dismissAlert = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
+        [uploadFailed addAction:dismissAlert];
+        [self presentViewController:uploadFailed animated:TRUE completion:nil];
+        [self->_goButton setTitle:@"Error, tap to resend" forState:UIControlStateNormal];
+        [self->_goButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     }];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    PMViewController *destinationViewContoller = [segue destinationViewController];
-    destinationViewContoller.uploadToHastebin = _uploadToHastebin;
 }
 
 @end

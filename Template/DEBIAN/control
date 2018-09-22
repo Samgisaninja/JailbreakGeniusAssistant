@@ -1,9 +1,8 @@
 Package: com.samgisaninja.jailbreakgeniusassistant
 Name: r/Jailbreak Genius™ Assistant
-Version: 0.0.1
+Version: 0.0.2
 Architecture: iphoneos-arm
 Description: help the r/jailbreak discord Geniuses™ figure out what's wrong
-Maintainer: Sam Gardner
-Author: Sam Gardner
+Maintainer: Sam Gardner <stgardner4@att.net>
+Author: Sam Gardner <stgardner4@att.net>
 Section: Utilities
-Depends: grep
