@@ -12,8 +12,8 @@
 
 @property (strong, nonatomic) NSMutableArray *packageNames;
 @property (strong, nonatomic) NSMutableArray *packageIDs;
-@property (strong, nonatomic) IBOutlet UIButton *goButton;
-@property (strong, nonatomic) IBOutlet UIButton *completeButton;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) NSString * discordTag;
+@property (strong, nonatomic) IBOutlet UILabel *infoLabel;
 @end
 

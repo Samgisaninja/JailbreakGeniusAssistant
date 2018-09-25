@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [[self infoLabel] setText:@"Note: we cannot and will not support devices with piracy.\nSorry for the inconvience.\nGenius™ Assistant developed by Samg_is_a_Ninja and olvrb."];
     
     
 }
@@ -29,7 +29,7 @@
     [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
 }
 
--(IBAction)startButton:(id)sender{
+-(IBAction)startButtonAction:(id)sender{
     UIAlertController *enterDiscordName = [UIAlertController alertControllerWithTitle:@"Discord Name" message:@"Please enter your discord name and discriminator" preferredStyle:UIAlertControllerStyleAlert];
     [enterDiscordName addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Samg_is_a_Ninja#6113";
@@ -43,9 +43,9 @@
 }
 
 -(void)runCheck{
-    [[self goButton] setTitle:@"Uploading..." forState:UIControlStateNormal];
-    [[self goButton] setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [[self goButton] setEnabled:FALSE];
+    [[self startButton] setTitle:@"Uploading..." forState:UIControlStateNormal];
+    [[self startButton] setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [[self startButton] setEnabled:FALSE];
     NSString *statusFile = [[NSString alloc]initWithContentsOfFile:@"/Library/dpkg/status" encoding:NSUTF8StringEncoding error:nil];
     NSArray *installedPackages = [statusFile componentsSeparatedByString:@"\n"];
     NSMutableArray * installedPackageBundleIDs = [[NSMutableArray alloc] init];
@@ -84,24 +84,28 @@
                                  @"iOS" : deviceVersion,
                                  @"Packages" : installedPackageBundleIDs,
                                  @"Sources" : installedSourcesWithoutPrefix,
-                                 @"DiscordTag" : _discordTag
+                                 @"DiscordTag" : _discordTag,
+                                 @"UploadMethod" : @"com.samgisaninja.jailbreakgeniusassistant"
                                  };
-    [saveToFile writeToFile:@"/var/mobile/Media/genius.plist" atomically:YES];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    [manager POST:@"https://rem.reoo.me" parameters:saveToFile progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self->_goButton setTitle:@"Done!" forState:UIControlStateNormal];
-        [self->_goButton setEnabled:FALSE];
-        [self->_goButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        UIAlertController *uploadFailed = [UIAlertController alertControllerWithTitle:@"Uploading packages failed" message:[NSString stringWithFormat:@"%@", [error localizedDescription]] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *dismissAlert = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
-        [uploadFailed addAction:dismissAlert];
-        [self presentViewController:uploadFailed animated:TRUE completion:nil];
-        [self->_goButton setTitle:@"Error, tap to resend" forState:UIControlStateNormal];
-        [self->_goButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    }];
+     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+     [manager POST:@"https://rem.reoo.me" parameters:saveToFile progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+     [self->_startButton setTitle:@"Done!" forState:UIControlStateNormal];
+     [self->_startButton setEnabled:FALSE];
+     [self->_startButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+     UIAlertController *uploadFailed = [UIAlertController alertControllerWithTitle:@"Uploading packages failed" message:[NSString stringWithFormat:@"%@", [error localizedDescription]] preferredStyle:UIAlertControllerStyleAlert];
+     UIAlertAction *dismissAlert = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
+     [uploadFailed addAction:dismissAlert];
+     [self presentViewController:uploadFailed animated:TRUE completion:nil];
+     [self->_startButton setTitle:@"Error, tap to retry" forState:UIControlStateNormal];
+     [self->_startButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+     }];
+}
+
+- (IBAction)openDiscordLinkAction:(id)sender{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://discord.gg/jb"] options:@{} completionHandler:nil];
 }
 
 @end
