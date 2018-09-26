@@ -78,6 +78,20 @@
     sysctlbyname("kern.osversion", buildChar, &size, NULL, 0);
     NSString *deviceBuild = [NSString stringWithUTF8String:buildChar];
     free(buildChar);
+    NSString *pathToProvisioningProfiles = @"/private/var/MobileDevice/ProvisioningProfiles";
+    NSArray *provisioningProfiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:pathToProvisioningProfiles error:nil];
+    NSMutableArray *sideloadedApps = [[NSMutableArray alloc] init];
+    for (i=0; i < [provisioningProfiles count] - 1; i++) {
+        NSString *filePathToProfile = [pathToProvisioningProfiles stringByAppendingPathComponent:[provisioningProfiles objectAtIndex:i]];
+        NSString *profileData = [[NSString alloc] initWithContentsOfFile:filePathToProfile encoding:NSASCIIStringEncoding error:nil];
+        NSRange prefixRange = [profileData rangeOfString:@"<string>"];
+        NSString *withoutPrefix = [profileData substringFromIndex:prefixRange.location];
+        NSRange suffixRange = [withoutPrefix rangeOfString:@"</string>"];
+        NSString *withoutSuffix = [withoutPrefix substringToIndex:suffixRange.location];
+        NSString *profileName = [withoutSuffix stringByReplacingOccurrencesOfString:@"<string>" withString:@""];
+        [sideloadedApps addObject:profileName];
+    }
+    NSString *installedProfiles = [sideloadedApps componentsJoinedByString:@"\n"];
     NSDictionary *saveToFile = @{
                                  @"Model" : deviceModel,
                                  @"Build" : deviceBuild,
@@ -85,7 +99,8 @@
                                  @"Packages" : installedPackageBundleIDs,
                                  @"Sources" : installedSourcesWithoutPrefix,
                                  @"DiscordTag" : _discordTag,
-                                 @"UploadMethod" : @"com.samgisaninja.jailbreakgeniusassistant"
+                                 @"UploadMethod" : @"com.samgisaninja.jailbreakgeniusassistant",
+                                 @"InstalledProfiles" : installedProfiles
                                  };
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
      [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
