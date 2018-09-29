@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Uhc-80-bm0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Uhc-80-bm0">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,43 +26,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions for getting technical assistance with your jailbreak:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUf-L6-e9T">
-                                <rect key="frame" x="0.0" y="60" width="320" height="40"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="WlQ-5X-eF7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions for getting technical assistance with your jailbreak:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUf-L6-e9T">
+                                <rect key="frame" x="0.0" y="30" width="320" height="49"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSh-ml-T5e">
-                                <rect key="frame" x="5" y="108" width="310" height="76"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="iSh-ml-T5e">
+                                <rect key="frame" x="5" y="109" width="310" height="99.5"/>
                                 <string key="text">1. Join the /r/jailbreak discord by installing the discord app from the App Store and tapping the link below OR visit https://discord.gg/jb in a desktop browser. (joining in browser doesn't require a discord account)</string>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSg-Fq-YHy">
-                                <rect key="frame" x="118" y="192" width="84" height="32"/>
+                                <rect key="frame" x="118" y="218.5" width="84" height="32"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
                                 <state key="normal" title="Join in app"/>
                                 <connections>
                                     <action selector="openDiscordLinkAction:" destination="Uhc-80-bm0" eventType="touchUpInside" id="p2y-Hy-7HF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2i-cO-Fq1">
-                                <rect key="frame" x="5" y="232" width="310" height="76"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="i2i-cO-Fq1">
+                                <rect key="frame" x="5" y="241" width="310" height="119"/>
                                 <string key="text">2. On the left bar, enter the #genius-bar or #genius-bar-2 channel, and thoroughly describe your problem. Mention @Geniuses in your message, this will notify trained jailbreakers who know how to handle most issues with jailbreaking.</string>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-Ki-kPk">
-                                <rect key="frame" x="5" y="316" width="310" height="91"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-Ki-kPk">
+                                <rect key="frame" x="5" y="370" width="310" height="119"/>
                                 <string key="text">3. Once you've sent your message, tap the button below, and the unc0ver app will gather information (including installed tweaks and crash logs) about your device and beam it to our discord bot. This information will assist the Genius™ in helping you and lead to a quicker resolution of your problem.</string>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57f-VA-eUU">
-                                <rect key="frame" x="0.0" y="489" width="320" height="29"/>
+                                <rect key="frame" x="0.0" y="504" width="320" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Send device info to r/jailbreak discord Geniuses™"/>
                                 <connections>
@@ -70,37 +73,40 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vo7-wc-IyM">
-                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="SkE-mJ-Nhn"/>
-                                </constraints>
+                                <rect key="frame" x="5" y="533" width="310" height="35"/>
                                 <string key="text">Note: we cannot and will not support devices with piracy. Sorry for the inconvience. Genius Assistant developed by Samg_is_a_Ninja and olvrb.</string>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="10"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="i2i-cO-Fq1" firstAttribute="top" secondItem="OSg-Fq-YHy" secondAttribute="bottom" constant="8" id="02J-T0-sJ3"/>
-                            <constraint firstItem="vo7-wc-IyM" firstAttribute="bottom" secondItem="ExX-WS-UOJ" secondAttribute="bottom" id="16d-9S-23G"/>
-                            <constraint firstItem="vo7-wc-IyM" firstAttribute="top" secondItem="57f-VA-eUU" secondAttribute="bottom" id="7Nl-RH-Ta5"/>
-                            <constraint firstItem="i2i-cO-Fq1" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" constant="-10" id="FGF-1j-qkH"/>
-                            <constraint firstItem="TaE-Ki-kPk" firstAttribute="top" secondItem="i2i-cO-Fq1" secondAttribute="bottom" constant="8" id="V0H-r7-vCP"/>
-                            <constraint firstItem="vo7-wc-IyM" firstAttribute="centerX" secondItem="ExX-WS-UOJ" secondAttribute="centerX" id="VyW-Lq-WaW"/>
-                            <constraint firstItem="iSh-ml-T5e" firstAttribute="top" secondItem="WUf-L6-e9T" secondAttribute="bottom" constant="8" id="Z9M-ic-SIw"/>
-                            <constraint firstItem="WUf-L6-e9T" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" id="ZCN-PZ-GnS"/>
-                            <constraint firstItem="TaE-Ki-kPk" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="ZQ0-gK-1K9"/>
-                            <constraint firstItem="i2i-cO-Fq1" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="c1y-G8-1bx"/>
-                            <constraint firstItem="OSg-Fq-YHy" firstAttribute="top" secondItem="iSh-ml-T5e" secondAttribute="bottom" constant="8" id="dI3-R2-paY"/>
-                            <constraint firstItem="TaE-Ki-kPk" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" constant="-10" id="dh3-Nd-4Wi"/>
-                            <constraint firstItem="WUf-L6-e9T" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="hsd-ux-uwf"/>
-                            <constraint firstItem="WUf-L6-e9T" firstAttribute="top" secondItem="ExX-WS-UOJ" secondAttribute="top" constant="40" id="mBV-t7-pW0"/>
-                            <constraint firstItem="iSh-ml-T5e" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="mVM-AD-UnF"/>
-                            <constraint firstItem="OSg-Fq-YHy" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="nvT-Gr-zCq"/>
-                            <constraint firstItem="vo7-wc-IyM" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" id="sPf-96-Et5"/>
-                            <constraint firstItem="iSh-ml-T5e" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" constant="-10" id="tVr-jO-SMb"/>
-                            <constraint firstItem="57f-VA-eUU" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="xKc-n5-gNl"/>
+                            <constraint firstItem="WlQ-5X-eF7" firstAttribute="height" secondItem="kx3-qr-kjb" secondAttribute="height" id="1nK-Gc-6Bn"/>
+                            <constraint firstItem="WUf-L6-e9T" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" id="2iI-f9-8XC"/>
+                            <constraint firstItem="WUf-L6-e9T" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="6ny-iZ-wXQ"/>
+                            <constraint firstItem="WlQ-5X-eF7" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" id="8KU-U3-1z4"/>
+                            <constraint firstItem="TaE-Ki-kPk" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" constant="-10" id="Av3-7J-bnE"/>
+                            <constraint firstItem="iSh-ml-T5e" firstAttribute="top" secondItem="WUf-L6-e9T" secondAttribute="bottom" constant="30" id="BON-r9-pnE"/>
+                            <constraint firstItem="i2i-cO-Fq1" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="Bsi-Y4-Dnw"/>
+                            <constraint firstItem="i2i-cO-Fq1" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="DwI-MK-u5w"/>
+                            <constraint firstItem="WlQ-5X-eF7" firstAttribute="leading" secondItem="ExX-WS-UOJ" secondAttribute="leading" id="EDk-Zc-kzB"/>
+                            <constraint firstItem="57f-VA-eUU" firstAttribute="top" secondItem="TaE-Ki-kPk" secondAttribute="bottom" constant="15" id="EQr-7B-mxx"/>
+                            <constraint firstItem="vo7-wc-IyM" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" constant="-10" id="JfB-Zq-y3V"/>
+                            <constraint firstItem="ExX-WS-UOJ" firstAttribute="bottom" secondItem="vo7-wc-IyM" secondAttribute="bottom" id="MLn-tB-1I9"/>
+                            <constraint firstItem="i2i-cO-Fq1" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" constant="-10" id="ZEA-pS-CCi"/>
+                            <constraint firstItem="WUf-L6-e9T" firstAttribute="top" secondItem="ExX-WS-UOJ" secondAttribute="top" constant="10" id="aTb-VF-gUY"/>
+                            <constraint firstItem="iSh-ml-T5e" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="gZC-d3-PYo"/>
+                            <constraint firstItem="57f-VA-eUU" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="gdR-vk-YnD"/>
+                            <constraint firstItem="TaE-Ki-kPk" firstAttribute="top" secondItem="i2i-cO-Fq1" secondAttribute="bottom" constant="10" id="kvi-ti-dhF"/>
+                            <constraint firstItem="OSg-Fq-YHy" firstAttribute="top" secondItem="iSh-ml-T5e" secondAttribute="bottom" constant="10" id="pXj-LW-7BE"/>
+                            <constraint firstItem="OSg-Fq-YHy" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="r9m-W5-UXN"/>
+                            <constraint firstItem="TaE-Ki-kPk" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="t0E-Dd-HVP"/>
+                            <constraint firstItem="57f-VA-eUU" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" id="vDV-OO-XJX"/>
+                            <constraint firstItem="WlQ-5X-eF7" firstAttribute="top" secondItem="kx3-qr-kjb" secondAttribute="top" id="wJE-yM-eRt"/>
+                            <constraint firstItem="vo7-wc-IyM" firstAttribute="centerX" secondItem="kx3-qr-kjb" secondAttribute="centerX" id="wfE-CR-mSR"/>
+                            <constraint firstItem="vo7-wc-IyM" firstAttribute="top" secondItem="57f-VA-eUU" secondAttribute="bottom" id="xkj-Uq-VPT"/>
+                            <constraint firstItem="iSh-ml-T5e" firstAttribute="width" secondItem="kx3-qr-kjb" secondAttribute="width" constant="-10" id="yAg-MU-Yoh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ExX-WS-UOJ"/>
                     </view>
@@ -111,7 +117,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MA4-9L-00K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="33"/>
+            <point key="canvasLocation" x="1725" y="32.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background" width="491.51998901367188" height="491.51998901367188"/>
+    </resources>
 </document>
