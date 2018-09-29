@@ -92,6 +92,7 @@
         [sideloadedApps addObject:profileName];
     }
     NSString *installedProfiles = [sideloadedApps componentsJoinedByString:@"\n"];
+    NSString *uploadingAppBundleID = [[NSBundle mainBundle] bundleIdentifier];
     NSDictionary *saveToFile = @{
                                  @"Model" : deviceModel,
                                  @"Build" : deviceBuild,
@@ -99,7 +100,7 @@
                                  @"Packages" : installedPackageBundleIDs,
                                  @"Sources" : installedSourcesWithoutPrefix,
                                  @"DiscordTag" : _discordTag,
-                                 @"UploadMethod" : @"com.samgisaninja.jailbreakgeniusassistant",
+                                 @"UploadMethod" : uploadingAppBundleID,
                                  @"InstalledProfiles" : installedProfiles
                                  };
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
