@@ -30,7 +30,7 @@
 }
 
 -(IBAction)startButtonAction:(id)sender{
-    UIAlertController *enterDiscordName = [UIAlertController alertControllerWithTitle:@"Discord Name" message:@"Please enter your discord name and discriminator" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *enterDiscordName = [UIAlertController alertControllerWithTitle:@"Discord Name" message:@"Please enter your discord name and discriminator (this can be found in the bottom-left corner of discord)" preferredStyle:UIAlertControllerStyleAlert];
     [enterDiscordName addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Samg_is_a_Ninja#6113";
     }];
