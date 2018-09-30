@@ -30,15 +30,23 @@
 }
 
 -(IBAction)startButtonAction:(id)sender{
+    UIAlertController *confirmUpload = [UIAlertController alertControllerWithTitle:@"Confrimation" message:@"The following information will be uploaded to discord: Device model, iOS version, tweak list, source list, installed profiles, and your discord tag" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Upload" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self runCheck];
+    }];
     UIAlertController *enterDiscordName = [UIAlertController alertControllerWithTitle:@"Discord Name" message:@"Please enter your discord name and discriminator (this can be found in the bottom-left corner of discord)" preferredStyle:UIAlertControllerStyleAlert];
     [enterDiscordName addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Samg_is_a_Ninja#6113";
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self->_discordTag = [[[enterDiscordName textFields] firstObject] text];
-        [self runCheck];
+        [self presentViewController:confirmUpload animated:TRUE completion:nil];
     }];
     [enterDiscordName addAction:continueAction];
+    [enterDiscordName addAction:cancelAction];
+    [confirmUpload addAction:confirmAction];
+    [confirmUpload addAction:cancelAction];
     [self presentViewController:enterDiscordName animated:TRUE completion:nil];
 }
 
