@@ -1,8 +1,14 @@
+Name: r/Jailbreak Genius Assistant
 Package: com.samgisaninja.jailbreakgeniusassistant
-Name: r/Jailbreak Genius™ Assistant
-Version: 1.0
+Priority: optional
+Depends: firmware (>= 7.0)
+Version: 1.1
 Architecture: iphoneos-arm
-Description: help the r/jailbreak discord Geniuses™ figure out what's wrong
+Description: get technical support from r/jailbreak discord
+Sponsor: thebigboss.org <http://thebigboss.org>
 Maintainer: Sam Gardner <stgardner4@att.net>
-Author: Sam Gardner & olvrb <stgardner4@att.net>
+Author: Samg_is_a_Ninja & olvrb <stgardner4@att.net>
 Section: Utilities
+Tag: purpose::uikit, compatible::ios11
+Installed-Size: 4643
+Icon: file:///Applications/jailbreakgeniusassistant.app/AppIcon60x60@2x.png
