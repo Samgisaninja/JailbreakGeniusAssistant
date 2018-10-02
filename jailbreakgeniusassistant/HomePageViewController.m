@@ -30,7 +30,7 @@
 }
 
 -(IBAction)startButtonAction:(id)sender{
-    UIAlertController *confirmUpload = [UIAlertController alertControllerWithTitle:@"Confrimation" message:@"The following information will be uploaded to discord: Device model, iOS version, tweak list, source list, installed profiles, and your discord tag" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *confirmUpload = [UIAlertController alertControllerWithTitle:@"Confrimation" message:@"The following information will be uploaded to discord: Device model, iOS version, tweak list, source list, installed profiles, and your discord tag. WARNING: If you upload tap upload, and your device contains ANY piracy, this violates r/jailbreak's rules and you will be muted until you remove your piracy, so if you're a pirate... tap cancel. :wink:" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Upload" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self runCheck];
@@ -129,7 +129,7 @@
 }
 
 - (IBAction)openDiscordLinkAction:(id)sender{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://discord.gg/jb"] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://discord.gg/jb"]];
 }
 
 @end
