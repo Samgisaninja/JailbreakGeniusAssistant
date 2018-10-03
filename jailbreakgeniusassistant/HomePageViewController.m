@@ -40,8 +40,17 @@
         textField.placeholder = @"Samg_is_a_Ninja#6113";
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        self->_discordTag = [[[enterDiscordName textFields] firstObject] text];
-        [self presentViewController:confirmUpload animated:TRUE completion:nil];
+        if ([[[[enterDiscordName textFields] firstObject] text] containsString:@"#"]) {
+            self->_discordTag = [[[enterDiscordName textFields] firstObject] text];
+            [self presentViewController:confirmUpload animated:TRUE completion:nil];
+        } else {
+            UIAlertController *invalidID = [UIAlertController alertControllerWithTitle:@"Invalid discord tag" message:@"Please type in your name followed by a '#' character and the 4-digit identifier suffix that appears fater your name. You can find your discord tag by right clicking (desktop) or tapping and holding (mobile) any message youve sent, then select 'mention'. Your discord tag will be pasted into the text line." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try again" style:UIAlertActionStyleDefault handler:nil];
+            [invalidID addAction:tryAgainAction];
+            [self presentViewController:invalidID animated:TRUE completion:^{
+                [self presentViewController:enterDiscordName animated:TRUE completion:nil];
+            }];
+        }
     }];
     [enterDiscordName addAction:continueAction];
     [enterDiscordName addAction:cancelAction];
